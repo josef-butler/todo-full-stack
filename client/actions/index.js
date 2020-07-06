@@ -12,14 +12,14 @@ import {
   delTask as apiDelTask
 } from '../apis/api'
 
-export function setLoading(loading) {
+function setLoading(loading) {
   return {
     type: SET_LOADING,
     loading: loading
   }
 }
 
-export function setTasks(tasks) {
+function setTasks(tasks) {
   return {
     type: SET_TASKS,
     tasks: tasks,
@@ -40,12 +40,24 @@ export function setTasks(tasks) {
 //   }
 // }
 
-// export function delTask(task) {
-//   return {
-//     type: DEL_TASK,
-//     task: task,
-//   }
-// }
+function delTask(task) {
+  return {
+    type: DEL_TASK,
+    task: task,
+  }
+}
+
+export function deleteTask(task) {
+  return (dispatch) => {
+    apiDelTask(task)
+      .then(task => {
+        dispatch(delTask(task))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+}
 
 export function fetchTasks(showLoading = true) {
   return (dispatch) => {

@@ -2,6 +2,10 @@
     margin-top: 100px;
 }
 
+.textCenter {
+    text-align: center
+}
+
 #loaderGif {
     display: block;
     margin-left: auto;

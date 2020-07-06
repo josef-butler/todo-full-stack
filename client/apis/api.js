@@ -25,9 +25,9 @@ export function updateTask(id, task) {
     .catch(err => console.log(err))
 }
 
-export function delTask(id) {
+export function delTask(task) {
   return request
-    .delete(`apiUrl${id}`)
+    .delete(`${apiUrl}${task.id}`)
     .then(res => res.body)
     .catch(err => console.log(err))
 }
