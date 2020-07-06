@@ -1,10 +1,18 @@
-import { RECEIVE_TASKS } from '../actions'
+import { SET_TASKS, ADD_TASK, UPDATE_TASK, DEL_TASK } from '../actions'
 
-// update state with whatever you get from db
-const reducer = (state = [], action) => {
+const initialState = []
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case RECEIVE_TASKS:
+    case SET_TASKS:
       return action.tasks
+    case ADD_TASK:
+      return [...state, action.task]
+    // just check the return for update task might not work
+    case UPDATE_TASK:
+      return [...state, action.task]
+    case DEL_TASK:
+      return state.filter((task) => task !== action.task)
     default:
       return state
   }
