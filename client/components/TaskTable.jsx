@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import { fetchTasks } from '../actions'
+
+// Font awesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 import LoadingSpinner from './LoadingSpinner'
 import Task from './Task'
@@ -25,6 +28,7 @@ class TaskTable extends React.Component {
               <th>Priority</th>
               <th>Due date</th>
               <th>Completed</th>
+              <th><FontAwesomeIcon icon={faTrashAlt} /></th>
             </tr>
           </thead>
             <tbody>
