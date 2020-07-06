@@ -15,4 +15,16 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  db.addTask()
+    .then(tasks => {
+      // res.send() wat do here
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send(err.message)
+    })
+})
+
 module.exports = router
