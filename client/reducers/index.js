@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
 import tasks from './tasks'
+import loading from './loading'
 
-const reducer = combineReducers({
-  tasks
+export default combineReducers({
+  tasks: tasks,
+  loading: loading
 })
-
-export default reducer

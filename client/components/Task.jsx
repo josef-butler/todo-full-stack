@@ -1,17 +1,15 @@
 import React from 'react'
 
-const Task = () => {
+const Task = (props) => {
   return (
-    <tbody>
       <tr>
-        <td>{this.props.date_added}</td>
-        <td>{this.props.task}</td>
-        <td>{this.props.description}</td>
-        <td>{this.props.priority}</td>
-        <td>{this.props.due_date}</td>
-        <td>{this.props.completed}</td>
+        <td>{props.task.date_added}</td>
+        <td>{props.task.task}</td>
+        <td>{props.task.details}</td>
+        <td>{props.task.priority}</td>
+        <td>{props.task.due_date}</td>
+        <td>{props.task.completed}</td>
       </tr>
-    </tbody>
   )
 }
 

@@ -11,7 +11,7 @@ export function getTasks() {
 
 export function addTask(task) {
   return request
-    .post('/')
+    .post(apiUrl)
     .send(task)
     .then(res => res.body)
     .catch(err => console.log(err))
@@ -19,7 +19,7 @@ export function addTask(task) {
 
 export function updateTask(id, task) {
   return request
-    .patch(`/${id}`)
+    .patch(`apiUrl${id}`)
     .send(task)
     .then(res => res.body)
     .catch(err => console.log(err))
@@ -27,7 +27,7 @@ export function updateTask(id, task) {
 
 export function delTask(id) {
   return request
-    .delete(`/${id}`)
+    .delete(`apiUrl${id}`)
     .then(res => res.body)
     .catch(err => console.log(err))
 }
