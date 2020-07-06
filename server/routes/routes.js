@@ -32,8 +32,8 @@ router.post('/', (req, res) => {
     })
 })
 
-router.patch('/', (req, res) => {
-  const id = req.body.id
+router.patch('/:id', (req, res) => {
+  const id = req.params.id
   const task = req.body
 
   db.updateTask(id, task)
@@ -50,8 +50,8 @@ router.patch('/', (req, res) => {
   })
 })
 
-router.delete('/', (req, res) => {
-  const id = req.body.id
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
 
   db.deleteTask(id)
     .then(() => {
