@@ -15,12 +15,12 @@ function getTasks(db = connection) {
 function addTask(task, db = connection) {
   return db('todos')
     .insert({
-      date_added: new Date(),
+      date_added: task.date_added,
       task: task.task,
       details: task.details,
       priority: task.priority,
       due_date: task.due_date,
-      complete: task.complete
+      completed: task.completed
     })
 }
 
@@ -33,7 +33,7 @@ function updateTask(id, task, db = connection) {
       details: task.details,
       priority: task.priority,
       due_date: task.due_date,
-      complete: task.complete
+      completed: task.completed
     })
 }
 
