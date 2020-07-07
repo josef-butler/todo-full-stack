@@ -161,7 +161,7 @@ class Task extends React.Component {
             </td>
             <td>
               <button
-                className="button"
+                className="button button-primary"
                 type="button"
                 name="updateTaskButton"
                 onClick={this.handleUpdate}>
