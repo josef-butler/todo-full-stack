@@ -2,9 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteTask, updateTask } from '../actions'
 
-// Font awesome icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faEdit, faTrashAlt, faSave } from '@fortawesome/free-solid-svg-icons'
+import TaskReadMode from './TaskReadMode'
+import TaskEditMode from './TaskEditMode'
 
 class Task extends React.Component {
   state = {
@@ -73,111 +72,21 @@ class Task extends React.Component {
   render() {
     return (
       <>
-        {/* Read only mode */}
-        {!this.state.editMode &&
-          <tr>
-            <td>{this.state.task.date_added}</td>
-            <td>{this.state.task.task}</td>
-            <td>{this.state.task.details}</td>
-            <td>{this.state.task.priority}</td>
-            <td>{this.state.task.due_date}</td>
-            <td className="textCenter">{
-              this.state.task.completed == 1
-                ? <FontAwesomeIcon icon={faCheck} />
-                : <></>
-            }</td>
-            <td>
-              <button onClick={this.handleEditClick} className="button" type="button" name="edit">
-                <FontAwesomeIcon icon={faEdit} />
-              </button>
-            </td>
-            <td>
-              <button className="button" onClick={this.handleDelete} type="button" name="delete">
-                <FontAwesomeIcon icon={faTrashAlt} />
-              </button>
-            </td>
-          </tr>
+        {!this.state.editMode && 
+          <TaskReadMode
+            task={this.state.task}
+            handleEditClick={this.handleEditClick}
+            handleDeleteClick={this.handleDelete}
+          />  
         }
 
-        {/* Edit mode */}
         {this.state.editMode &&
-          <tr>
-            <td>
-              <input
-                onChange={this.handleChange}
-                className="u-full-width editInput"
-                name="date_added"
-                value={this.state.task.date_added}
-                placeholder={`${this.state.task.date_added}`}>
-              </input>
-            </td>
-            <td>
-              <input
-                onChange={this.handleChange}
-                className="u-full-width editInput"
-                name="task"
-                value={this.state.task.task}
-                placeholder={`${this.state.task.task}`}>
-              </input>
-            </td>
-            <td>
-              <input
-                onChange={this.handleChange}
-                className="u-full-width editInput"
-                name="details"
-                value={this.state.task.details}
-                placeholder={`${this.state.task.details}`}>
-              </input>
-            </td>
-            <td>
-              <select
-                onChange={this.handleChange}
-                className="u-full-width editInput"
-                name="priority">
-                  <option value="High">High</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Low">Low</option>
-              </select>
-            </td>
-            <td>
-              <input
-                onChange={this.handleChange}
-                className="u-full-width editInput"
-                name="due_date"
-                value={this.state.task.due_date}
-                placeholder={`${this.state.task.due_date}`}>
-              </input>
-            </td>
-            <td
-              className="textCenter">
-              <input
-                onChange={this.handleChange}
-                name="completed"
-                value={this.state.task.completed}
-                defaultChecked={this.state.task.completed}
-                type="checkbox"
-                >
-              </input>
-            </td>
-            <td>
-              <button
-                className="button"
-                type="button"
-                name="updateTaskButton"
-                onClick={this.handleUpdate}>
-                <FontAwesomeIcon icon={faSave} />
-              </button>
-            </td>
-            <td>
-              <button
-                className="button"
-                type="button"
-                name="addTaskButton"
-                onClick={this.handleDelete}>
-                <FontAwesomeIcon icon={faTrashAlt} />
-              </button>
-            </td>
-          </tr>
+          <TaskEditMode
+            task={this.state.task}
+            handleChange={this.handleChange}
+            handleUpdateClick={this.handleUpdate}
+            handleDeleteClick={this.handleDelete}
+          />
         }
       </>
     )

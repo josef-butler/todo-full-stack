@@ -2,10 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchTasks } from '../actions'
 
-// Font awesome icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-
 import LoadingSpinner from './LoadingSpinner'
 import Task from './Task'
 import AddTaskRow from './AddTaskRow'
@@ -19,7 +15,7 @@ class TaskTable extends React.Component {
     return (
       <>
       {this.props.loading && <LoadingSpinner />}
-      {!this.props.loading &&
+      {!this.props.loading && 
         <table className="u-full-width">
           <thead>
             <tr>

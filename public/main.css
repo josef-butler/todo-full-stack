@@ -1,23 +1,29 @@
-.editInput {
-    display: inline-block;
-    line-height: 38px;
-    text-decoration: none;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    box-sizing: border-box;
+button {
+    padding: 0 14px;
+    font-size: 0.8em;
     margin-bottom: 0;
+}
+
+td {
+    padding-left: 1px;
+    padding-right: 1px;
 }
 
 .container {
     margin-top: 100px;
 }
 
-.button {
-    padding: 0 14px;
-    font-size: 0.8em;
+.editInput {
+    display: inline-block;
+    line-height: 38px;
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    box-sizing: border-box;
     margin-bottom: 0;
+    height: 42px;
+    padding: 2px;
 }
 
 .textCenter {
