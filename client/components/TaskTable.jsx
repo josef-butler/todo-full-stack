@@ -2,11 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchTasks } from '../actions'
 
-import LoadingSpinner from './LoadingSpinner'
+import { LoadingSpinner } from './LoadingSpinner'
 import Task from './Task'
 import AddTaskRow from './AddTaskRow'
 
-class TaskTable extends React.Component {
+export class TaskTable extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchTasks())
   }

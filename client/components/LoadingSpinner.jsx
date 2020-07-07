@@ -1,9 +1,7 @@
 import React from 'react'
 
-const LoadingSpinner = () => {
+export const LoadingSpinner = () => {
   return (
     <img id="loaderGif" src="/images/loader.gif" alt="Loader animation"/>
   )
 }
-
-export default LoadingSpinner
