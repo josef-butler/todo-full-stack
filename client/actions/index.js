@@ -33,17 +33,29 @@ function addTask(task) {
   }
 }
 
-// export function updateTask(task) {
-//   return {
-//     type: UPDATE_TASK,
-//     task: task,
-//   }
-// }
+function editTask(task) {
+  return {
+    type: UPDATE_TASK,
+    task: task,
+  }
+}
 
 function delTask(id) {
   return {
     type: DEL_TASK,
     task: id,
+  }
+}
+
+export function updateTask(id, task) {
+  return (dispatch) => {
+    apiUpdateTask(id, task)
+      .then(() => {
+        dispatch(fetchTasks(false))
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }
 

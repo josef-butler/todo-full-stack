@@ -82,7 +82,7 @@ class AddTaskRow extends React.Component {
         </td>
         <td></td>
         <td>
-          <button className="button" type="button" name="addTaskButton" onClick={this.handleAdd}>
+          <button className="button button-primary" type="button" name="addTaskButton" onClick={this.handleAdd}>
             <FontAwesomeIcon icon={faSave} />
           </button>
         </td>

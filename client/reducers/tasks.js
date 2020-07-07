@@ -8,8 +8,8 @@ const reducer = (state = initialState, action) => {
       return action.tasks
     case ADD_TASK:
       return [...state, action.task]
-    // case UPDATE_TASK:
-    //   return [...state, action.task]
+    case UPDATE_TASK:
+      return [...state, action.task]
     case DEL_TASK:
       return state.filter(task => task.id != action.task)
     default:

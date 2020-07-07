@@ -19,7 +19,7 @@ export function addTask(task) {
 
 export function updateTask(id, task) {
   return request
-    .patch(`apiUrl${id}`)
+    .patch(`${apiUrl}${id}`)
     .send(task)
     .then(res => res.body)
     .catch(err => console.log(err))
