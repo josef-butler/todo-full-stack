@@ -9,6 +9,14 @@ td {
     padding-right: 1px;
 }
 
+input[type=checkbox] {
+    margin: 0;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
 .container {
     margin-top: 100px;
 }
