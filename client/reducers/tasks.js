@@ -5,7 +5,7 @@ const initialState = []
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TASKS:
-      return action.tasks
+      return action.tasks.reverse()
     case ADD_TASK:
       return [...state, action.task]
     case UPDATE_TASK:
