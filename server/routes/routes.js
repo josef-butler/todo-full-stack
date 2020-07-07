@@ -55,10 +55,8 @@ router.delete('/:id', (req, res) => {
 
   db.deleteTask(id)
     .then(() => {
-      db.getTasks()
-        .then(tasks => {
-          res.json(tasks)
-        })
+      res
+        .send(id)
     })
     .catch(err => {
       res

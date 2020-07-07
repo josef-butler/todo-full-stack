@@ -8,7 +8,7 @@ import { faCheck, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 class Task extends React.Component {
   handleDelete = () => {
-    this.props.dispatch(deleteTask(this.props.task))
+    this.props.dispatch(deleteTask(this.props.task.id))
   }
 
   render() {
@@ -38,7 +38,7 @@ class Task extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    deleteTask: task => dispatch(deleteTask(task))
+    deleteTask: id => dispatch(deleteTask(id))
   }
 }
 

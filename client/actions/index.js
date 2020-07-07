@@ -40,18 +40,18 @@ function setTasks(tasks) {
 //   }
 // }
 
-function delTask(task) {
+function delTask(id) {
   return {
     type: DEL_TASK,
-    task: task,
+    task: id,
   }
 }
 
-export function deleteTask(task) {
+export function deleteTask(id) {
   return (dispatch) => {
-    apiDelTask(task)
-      .then(task => {
-        dispatch(delTask(task))
+    apiDelTask(id)
+      .then(taskId => {
+        dispatch(delTask(taskId))
       })
       .catch(err => {
         console.log(err)

@@ -12,7 +12,7 @@ const reducer = (state = initialState, action) => {
     // case UPDATE_TASK:
     //   return [...state, action.task]
     case DEL_TASK:
-      return state.filter((task) => task != action.task)
+      return state.filter(task => task.id != action.task)
     default:
       return state
   }
