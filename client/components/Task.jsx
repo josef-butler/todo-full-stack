@@ -145,7 +145,7 @@ class Task extends React.Component {
                 className="u-full-width editInput"
                 name="due_date"
                 value={this.state.task.due_date}
-                placeholder={`${this.state.task.value}`}>
+                placeholder={`${this.state.task.due_date}`}>
               </input>
             </td>
             <td
@@ -161,7 +161,7 @@ class Task extends React.Component {
             </td>
             <td>
               <button
-                className="button button-primary"
+                className="button"
                 type="button"
                 name="updateTaskButton"
                 onClick={this.handleUpdate}>

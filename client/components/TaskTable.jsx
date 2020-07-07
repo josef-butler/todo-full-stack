@@ -11,24 +11,8 @@ import Task from './Task'
 import AddTaskRow from './AddTaskRow'
 
 class TaskTable extends React.Component {
-  state = {
-    addTaskButtonClicked: false
-  }
-
   componentDidMount() {
     this.props.dispatch(fetchTasks())
-  }
-
-  addTaskButtonClicked = (e) => {
-    if (this.state.addTaskButtonClicked === false) {
-      this.setState({
-        addTaskButtonClicked: true
-      })
-    } else {
-      this.setState({
-        addTaskButtonClicked: false
-      })
-    }
   }
 
   render() {
@@ -39,25 +23,18 @@ class TaskTable extends React.Component {
         <table className="u-full-width">
           <thead>
             <tr>
-              <th>Date added</th>
-              <th>Task</th>
-              <th>Details</th>
-              <th>Priority</th>
-              <th>Due date</th>
-              <th>Done</th>
-              <th></th>
-              <th>
-                <button className="button button-primary" type="button" name="addTaskButton" onClick={this.addTaskButtonClicked}>
-                  {!this.state.addTaskButtonClicked
-                  ? <FontAwesomeIcon icon={faPlus} />
-                  : <FontAwesomeIcon icon={faMinus} />
-                  }
-                </button>
-              </th>
+              <th className="bottomBorderBlue">Date added</th>
+              <th className="bottomBorderBlue">Task</th>
+              <th className="bottomBorderBlue">Details</th>
+              <th className="bottomBorderBlue">Priority</th>
+              <th className="bottomBorderBlue">Due date</th>
+              <th className="textCenter bottomBorderBlue">Done</th>
+              <th className="bottomBorderBlue"></th>
+              <th className="bottomBorderBlue"></th>
             </tr>
           </thead>
             <tbody>
-              {this.state.addTaskButtonClicked && <AddTaskRow />}
+              <AddTaskRow />
               {this.props.tasks.map(task => (
                 <Task key={task.id} task={task} />)
               )}

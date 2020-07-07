@@ -4,7 +4,7 @@ import { saveTask } from '../actions'
 
 // Font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 class AddTaskRow extends React.Component {
   state = {
@@ -19,12 +19,16 @@ class AddTaskRow extends React.Component {
   }
 
   componentDidMount() {
+    const todaysDate = this.getTodaysDate()
     this.setState({
-      date_added: this.setTodaysDate()
+      task: {
+        ...this.state.task,
+        date_added: todaysDate
+      }
     })
   }
 
-  setTodaysDate = () => {
+  getTodaysDate = () => {
     let today = new Date()
     let dd = today.getDate()
     let mm = today.getMonth()
@@ -68,22 +72,23 @@ class AddTaskRow extends React.Component {
   render() {
     return (
       <tr>
-        <td><input onChange={this.handleChange} name="date_added" className="u-full-width editInput" placeholder={`${this.state.date_added}`}></input></td>
-        <td><input onChange={this.handleChange} name="task" className="u-full-width editInput"></input></td>
-        <td><input onChange={this.handleChange} name="details" className="u-full-width editInput"></input></td>
-        <td><select onChange={this.handleChange} name="priority" className="u-full-width editInput">
+        <td className="bottomBorderBlue"><input onChange={this.handleChange} name="date_added" className="u-full-width editInput" value={`${this.state.task.date_added}`}></input></td>
+        <td className="bottomBorderBlue"><input onChange={this.handleChange} name="task" className="u-full-width editInput"></input></td>
+        <td className="bottomBorderBlue"><input onChange={this.handleChange} name="details" className="u-full-width editInput"></input></td>
+        <td className="bottomBorderBlue"><select onChange={this.handleChange} name="priority" className="u-full-width editInput">
           <option value="High">High</option>
           <option value="Medium">Medium</option>
           <option value="Low">Low</option>
         </select></td>
-        <td><input onChange={this.handleChange} name="due_date" className="u-full-width editInput"></input></td>
-        <td className="textCenter">
+        <td className="bottomBorderBlue"><input onChange={this.handleChange} name="due_date" className="u-full-width editInput"></input></td>
+        <td className="bottomBorderBlue textCenter">
           <input onChange={this.handleChange} name="completed" type="checkbox"></input>
         </td>
-        <td></td>
-        <td>
+        <td className="bottomBorderBlue">
+        </td>
+        <td className="bottomBorderBlue">
           <button className="button button-primary" type="button" name="addTaskButton" onClick={this.handleAdd}>
-            <FontAwesomeIcon icon={faSave} />
+            <FontAwesomeIcon icon={faPlus} />
           </button>
         </td>
       </tr>
