@@ -6,7 +6,9 @@ const db = require('../db/db')
 router.get('/', (req, res) => {
   db.getTasks()
     .then(tasks => {
-      res.json(tasks)
+      res
+        .status(200)
+        .json(tasks)
     })
     .catch(err => {
       res
@@ -19,11 +21,10 @@ router.post('/', (req, res) => {
   const task = req.body
 
   db.addTask(task)
-    .then(() => {
-      db.getTasks()
-        .then(tasks => {
-          res.json(tasks)
-        })
+    .then(id => {
+      res
+        .status(201)
+        .json({id: id})
     })
     .catch(err => {
       res
@@ -40,7 +41,9 @@ router.patch('/:id', (req, res) => {
     .then(() => {
       db.getTasks()
         .then(tasks => {
-          res.json(tasks)
+          res
+            .status(200)
+            .json(tasks)
         })
     })
     .catch(err => {
@@ -56,6 +59,7 @@ router.delete('/:id', (req, res) => {
   db.deleteTask(id)
     .then(() => {
       res
+        .status(200)
         .send(id)
     })
     .catch(err => {

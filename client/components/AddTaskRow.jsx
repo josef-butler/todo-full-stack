@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { saveTask } from '../actions'
 
 // Font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -33,36 +35,54 @@ class AddTaskRow extends React.Component {
   }
 
   handleAdd = e => {
-
+    this.props.dispatch(saveTask(this.state.task))
   }
 
   handleChange = e => {
-    this.setState({
-      task: {
-        ...this.state.task,
-        [e.target.name]: e.target.value
+    if (e.target.name != "completed") {
+      this.setState({
+        task: {
+          ...this.state.task,
+          [e.target.name]: e.target.value
+        }
+      })
+    } else {
+      if (this.state.task.completed === false) {
+        this.setState({
+          task: {
+            ...this.state.task,
+           [e.target.name]: true
+          }
+        })
+      } else {
+        this.setState({
+          task: {
+            ...this.state.task,
+            [e.target.name]: false
+          }
+        })
       }
-    }, console.log(this.state)
+    }
   }
 
   render() {
     return (
       <tr>
-        <td><input name="date_added" className="u-full-width editInput" placeholder={`${this.state.date_added}`}></input></td>
-        <td><input name="task" className="u-full-width editInput"></input></td>
-        <td><input name="details" className="u-full-width editInput"></input></td>
-        <td><select name="priority" className="u-full-width editInput">
+        <td><input onChange={this.handleChange} name="date_added" className="u-full-width editInput" placeholder={`${this.state.date_added}`}></input></td>
+        <td><input onChange={this.handleChange} name="task" className="u-full-width editInput"></input></td>
+        <td><input onChange={this.handleChange} name="details" className="u-full-width editInput"></input></td>
+        <td><select onChange={this.handleChange} name="priority" className="u-full-width editInput">
           <option value="High">High</option>
           <option value="Medium">Medium</option>
           <option value="Low">Low</option>
         </select></td>
-        <td><input name="due_date" className="u-full-width editInput"></input></td>
+        <td><input onChange={this.handleChange} name="due_date" className="u-full-width editInput"></input></td>
         <td className="textCenter">
-          <input name="completed" type="checkbox"></input>
+          <input onChange={this.handleChange} name="completed" type="checkbox"></input>
         </td>
         <td></td>
         <td>
-          <button className="button" type="button" name="addTaskButton" onClick={this.addTaskButtonClicked}>
+          <button className="button" type="button" name="addTaskButton" onClick={this.handleAdd}>
             <FontAwesomeIcon icon={faSave} />
           </button>
         </td>
@@ -71,4 +91,10 @@ class AddTaskRow extends React.Component {
   }
 }
 
-export default AddTaskRow
+function mapDispatchToProps(dispatch) {
+  return {
+    saveTask: task => dispatch(saveTask(task))
+  }
+}
+
+export default connect(mapDispatchToProps)(AddTaskRow)

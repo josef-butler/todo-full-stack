@@ -6,9 +6,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TASKS:
       return action.tasks
-    // case ADD_TASK:
-    //   return [...state, action.task]
-    // // just check the return for update task might not work
+    case ADD_TASK:
+      return [...state, action.task]
     // case UPDATE_TASK:
     //   return [...state, action.task]
     case DEL_TASK:

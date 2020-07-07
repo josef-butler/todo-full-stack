@@ -26,12 +26,12 @@ function setTasks(tasks) {
   }
 }
 
-// export function addTask(task) {
-//   return {
-//     type: ADD_TASK,
-//     task: task,
-//   }
-// }
+function addTask(task) {
+  return {
+    type: ADD_TASK,
+    task: task,
+  }
+}
 
 // export function updateTask(task) {
 //   return {
@@ -44,6 +44,18 @@ function delTask(id) {
   return {
     type: DEL_TASK,
     task: id,
+  }
+}
+
+export function saveTask(task) {
+  return (dispatch) => {
+    apiAddTask(task)
+      .then(() => {
+        dispatch(fetchTasks(false))
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }
 
