@@ -25,9 +25,13 @@ class Task extends React.Component {
             : <></>
         }
         </td>
-        <td><FontAwesomeIcon icon={faEdit} /></td>
         <td>
-          <button onClick={this.handleDelete} type="button" name="delete">
+          <button className="button" type="button" name="edit">
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+        </td>
+        <td>
+          <button className="button" onClick={this.handleDelete} type="button" name="delete">
             <FontAwesomeIcon icon={faTrashAlt} />
           </button>
         </td>
