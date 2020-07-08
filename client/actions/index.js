@@ -6,6 +6,7 @@ export const UPDATE_TASK = 'UPDATE_TASK'
 export const DEL_TASK = 'DEL_TASK'
 
 import {
+  getTask as apiGetTask,
   getTasks as apiGetTasks,
   addTask as apiAddTask,
   updateTask as apiUpdateTask,
@@ -14,35 +15,35 @@ import {
 
 function setLoading(loading) {
   return {
-    type: SET_LOADING,
+    type: 'SET_LOADING',
     loading: loading
   }
 }
 
 function setTasks(tasks) {
   return {
-    type: SET_TASKS,
+    type: 'SET_TASKS',
     tasks: tasks,
   }
 }
 
 function addTask(task) {
   return {
-    type: ADD_TASK,
+    type: 'ADD_TASK',
     task: task,
   }
 }
 
 function editTask(task) {
   return {
-    type: UPDATE_TASK,
+    type: 'UPDATE_TASK',
     task: task,
   }
 }
 
 function delTask(id) {
   return {
-    type: DEL_TASK,
+    type: 'DEL_TASK',
     task: id,
   }
 }
@@ -51,7 +52,7 @@ export function updateTask(id, task) {
   return (dispatch) => {
     apiUpdateTask(id, task)
       .then(() => {
-        dispatch(fetchTasks(false))
+        dispatch(editTask(task))
       })
       .catch(err => {
         console.log(err)
@@ -62,8 +63,11 @@ export function updateTask(id, task) {
 export function saveTask(task) {
   return (dispatch) => {
     apiAddTask(task)
-      .then(() => {
-        dispatch(fetchTasks(false))
+      .then((newTaskId) => {
+        apiGetTask(newTaskId)
+          .then((newTask) => {
+            dispatch(addTask(newTask))
+          })
       })
       .catch(err => {
         console.log(err)

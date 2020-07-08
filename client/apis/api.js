@@ -9,6 +9,13 @@ export function getTasks() {
     .catch(err => console.log(err))
 }
 
+export function getTask(id) {
+  return request
+    .get(`${apiUrl}${id}`)
+    .then(res => res.body)
+    .catch(err => console.log(err))
+}
+
 export function addTask(task) {
   return request
     .post(apiUrl)

@@ -2,6 +2,7 @@ const connection = require('./connection')
 
 module.exports = {
   getTasks,
+  getTask,
   addTask,
   updateTask,
   deleteTask
@@ -9,6 +10,12 @@ module.exports = {
 
 function getTasks(db = connection) {
   return db('todos')
+    .select()
+}
+
+function getTask(id, db = connection) {
+  return db('todos')
+    .where('id', id)
     .select()
 }
 

@@ -17,6 +17,21 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:id', (req, res) => {
+  const id = req.params.id
+  db.getTask(id)
+    .then(task => {
+      res
+        .status(200)
+        .json(task[0])
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send(err.message)
+    })
+})
+
 router.post('/', (req, res) => {
   const task = req.body
 
@@ -24,7 +39,7 @@ router.post('/', (req, res) => {
     .then(id => {
       res
         .status(201)
-        .json({id: id})
+        .json(id[0])
     })
     .catch(err => {
       res
